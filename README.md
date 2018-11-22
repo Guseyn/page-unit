@@ -1,6 +1,8 @@
 # page-unit
 Library for [Page](https://github.com/Guseyn/page) framework that provides Unit abstraction.
 
+[![NPM Version][npm-image]][npm-url]
+
 ## install
 
 `npm install @page-libs/unit`
@@ -98,4 +100,5 @@ new UserForm(
 
 ```
 
-
+[npm-image]: https://img.shields.io/npm/v/@page-libs/unit.svg
+[npm-url]: https://npmjs.org/package/@page-libs/unit
