@@ -1,0 +1,32 @@
+{
+  "name": "@page-libs/unit",
+  "version": "1.0.0",
+  "description": "Library for Page framework that provides Unit abstraction.",
+  "main": "out/index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "build": "grunt"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Guseyn/page-unit.git"
+  },
+  "keywords": [
+    "cutie",
+    "page",
+    "unit"
+  ],
+  "author": "guseyn",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/Guseyn/page-unit/issues"
+  },
+  "homepage": "https://github.com/Guseyn/page-unit#readme",
+  "devDependencies": {
+    "@babel/core": "^7.1.2",
+    "@babel/preset-env": "^7.1.0",
+    "grunt": "^1.0.3",
+    "grunt-babel": "^8.0.0",
+    "load-grunt-tasks": "^4.0.0"
+  }
+}
