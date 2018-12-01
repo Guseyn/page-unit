@@ -3,6 +3,8 @@ Library for [Page](https://github.com/Guseyn/page) framework that provides Unit 
 
 [![NPM Version][npm-image]][npm-url]
 
+It's based on the [Async Tree Pattern](https://github.com/Guseyn/async-tree-patern/blob/master/Async_Tree_Patern.pdf).
+
 ## install
 
 `npm install @page-libs/unit`
@@ -11,7 +13,41 @@ Library for [Page](https://github.com/Guseyn/page) framework that provides Unit 
 
 `npm run build`
 
+Package is already built. So, for using in Page you just need to install it.
+
+## test
+
+`npm test`
+
 ## Unit
+
+### Unit implementation
+
+```js
+class Unit {
+
+  constructor(elm) {
+    this.elm = elm;
+    for (let propertyName of Object.getOwnPropertyNames(Object.getPrototypeOf(this))) {
+      if (this[propertyName] instanceof Function 
+          && this[propertyName] !== 'constructor' 
+          && propertyName.startsWith('on')) {
+        this.elm[propertyName] = this[propertyName].bind(this);
+      }
+    }  
+  }
+
+  override(methodName, method) {
+    this.elm[methodName] = method.bind(this);
+  }
+
+}
+
+```
+
+Every class that extends `Unit` has `override` method. It can be used for rebinding events from encapsulated elements to a custom events of Unit that encapsulates them. In the example below, when button is clicked, `onsubmit` is used instead of `onclick` event of the button.
+
+## Example
 
 Let's say we have html template(pseudocode):
 
@@ -33,17 +69,15 @@ class UserForm extends Unit {
      this.passwordUnit = passwordUnit;
      this.submitButtonUnit = submitButtonUnit;
      // so when submit button is clicked, onsubmit event will be invoked
-     submitButtonUnit.override('onclick', onsubmit); 
+     submitButtonUnit.override('onclick', this.onsubmit); 
   }
 
-  onsumbit() {
+  onsubmit() {
      // ajaxRequest using nameUnit.value() and passwordUnit.value();
-   }
+  }
 
 }
 ```
-
-Every class that extends `Unit` has `override` method. It can be used for rebinding events from encapsulated elements to a custom events of Unit that encapsulates them. In the example above, when button is clicked, `onsubmit` is used instead of `onclick` event of the button.
 
 ```js
 class SubmitButton extends Unit {
@@ -88,7 +122,7 @@ class PasswordInput extends Unit {
 }
 ```
 
-## usage
+### usage
 
 ```js
 new UserForm(

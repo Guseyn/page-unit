@@ -44,7 +44,7 @@ function () {
   _createClass(Unit, [{
     key: "override",
     value: function override(methodName, method) {
-      this.elm[methodName] = method;
+      this.elm[methodName] = method.bind(this);
     }
   }]);
 
