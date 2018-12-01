@@ -12,7 +12,7 @@ class Unit {
   }
 
   override(methodName, method) {
-    this.elm[methodName] = method;
+    this.elm[methodName] = method.bind(this);
   }
 
 }
