@@ -37,8 +37,8 @@ class Unit {
     }  
   }
 
-  override(methodName, method) {
-    this.elm[methodName] = method.bind(this);
+  override(unit, methodName, method) {
+    unit.elm[methodName] = method.bind(this);
   }
 
 }
@@ -60,7 +60,6 @@ Let's say we have html template(pseudocode):
 ```
 
 ```js
-
 class UserForm extends Unit {
   
   constructor(elm, nameUnit, passwordUnit, submitButtonUnit) {
@@ -69,7 +68,7 @@ class UserForm extends Unit {
      this.passwordUnit = passwordUnit;
      this.submitButtonUnit = submitButtonUnit;
      // so when submit button is clicked, onsubmit event will be invoked
-     submitButtonUnit.override('onclick', this.onsubmit); 
+     this.override(this.submitButtonUnit, 'onclick', this.onsubmit); 
   }
 
   onsubmit() {
@@ -77,6 +76,7 @@ class UserForm extends Unit {
   }
 
 }
+
 ```
 
 ```js

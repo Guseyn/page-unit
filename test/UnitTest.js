@@ -13,7 +13,7 @@ class UserForm extends Unit {
      this.passwordUnit = passwordUnit;
      this.submitButtonUnit = submitButtonUnit;
      // so when submit button is clicked, onsubmit event will be invoked
-     submitButtonUnit.override('onclick', this.onsubmit); 
+     this.override(this.submitButtonUnit, 'onclick', this.onsubmit); 
   }
 
   onsubmit() {
