@@ -5,7 +5,7 @@
   "main": "out/index.js",
   "scripts": {
     "test": "node test-executor",
-    "build": "grunt"
+    "build": "node build"
   },
   "repository": {
     "type": "git",
@@ -22,16 +22,25 @@
     "url": "https://github.com/Guseyn/page-unit/issues"
   },
   "homepage": "https://github.com/Guseyn/page-unit#readme",
+  "dependencies": {
+    "@cuties/assert": "^1.2.0",
+    "@cuties/cutie": "^1.7.0",
+    "@cuties/fs": "^1.2.0",
+    "@cuties/json": "^1.1.0",
+    "@cuties/spawn": "^1.0.1",
+    "@cuties/wall": "^1.1.0",
+    "test-executor": "^1.2.0"
+  },
   "devDependencies": {
     "@babel/core": "^7.1.2",
     "@babel/preset-env": "^7.1.0",
     "grunt": "^1.0.3",
     "grunt-babel": "^8.0.0",
-    "load-grunt-tasks": "^4.0.0"
-  },
-  "dependencies": {
-    "@cuties/assert": "^1.1.5",
-    "@cuties/cutie": "^1.4.4",
-    "test-executor": "^1.1.2"
+    "load-grunt-tasks": "^4.0.0",
+    "eslint-config-standard": "^12.0.0",
+    "eslint-plugin-import": "^2.16.0",
+    "eslint-plugin-node": "^8.0.1",
+    "eslint-plugin-promise": "^4.0.1",
+    "eslint-plugin-standard": "^4.0.0"
   }
 }
