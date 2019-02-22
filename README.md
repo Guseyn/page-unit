@@ -1,23 +1,26 @@
 # page-unit
-Library for [Page](https://github.com/Guseyn/page) framework that provides Unit abstraction.
 
-[![NPM Version][npm-image]][npm-url]
+[![NPM Version](https://img.shields.io/npm/v/@page-libs/unit.svg)](https://npmjs.org/package/@page-libs/unit)
+[![Build Status](https://travis-ci.org/Guseyn/page-unit.svg?branch=master)](https://travis-ci.org/Guseyn/page-unit)
+[![codecov](https://codecov.io/gh/Guseyn/page-unit/branch/master/graph/badge.svg)](https://codecov.io/gh/Guseyn/page-unit)
+
+Library for [Page](https://github.com/Guseyn/page) framework that provides Unit abstraction.
 
 It's based on the [Async Tree Pattern](https://github.com/Guseyn/async-tree-patern/blob/master/Async_Tree_Patern.pdf).
 
-## install
+## Install
 
 `npm install @page-libs/unit`
 
-## build
+## Run test
+
+`npm test`
+
+## Run build
 
 `npm run build`
 
 Package is already built. So, for using in Page you just need to install it.
-
-## test
-
-`npm test`
 
 ## Unit
 
@@ -122,7 +125,7 @@ class PasswordInput extends Unit {
 }
 ```
 
-### usage
+Then you can declare elements in the following style:
 
 ```js
 new UserForm(
@@ -133,6 +136,3 @@ new UserForm(
 );
 
 ```
-
-[npm-image]: https://img.shields.io/npm/v/@page-libs/unit.svg
-[npm-url]: https://npmjs.org/package/@page-libs/unit
