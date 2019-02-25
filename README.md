@@ -26,22 +26,20 @@ Package is already built. So, for using in Page you just need to install it.
 
 ```js
 class Unit {
-
-  constructor(elm) {
-    this.elm = elm;
+  constructor (elm) {
+    this.elm = elm
     for (let propertyName of Object.getOwnPropertyNames(Object.getPrototypeOf(this))) {
-      if (this[propertyName] instanceof Function 
-          && this[propertyName] !== 'constructor' 
-          && propertyName.startsWith('on')) {
-        this.elm[propertyName] = this[propertyName].bind(this);
+      if (this[propertyName] instanceof Function &&
+          this[propertyName] !== 'constructor' &&
+          propertyName.startsWith('on')) {
+        this.elm[propertyName] = this[propertyName].bind(this)
       }
-    }  
+    }
   }
 
-  override(unit, methodName, method) {
-    unit.elm[methodName] = method.bind(this);
+  override (unit, methodName, method) {
+    unit.elm[methodName] = method.bind(this)
   }
-
 }
 
 ```
@@ -61,66 +59,69 @@ Let's say we have html template(pseudocode):
 ```
 
 ```js
+const { Unit } = require('@page-libs/unit')
+
 class UserForm extends Unit {
-  
-  constructor(elm, nameUnit, passwordUnit, submitButtonUnit) {
-     super(elm);
-     this.nameUnit = nameUnit;
-     this.passwordUnit = passwordUnit;
-     this.submitButtonUnit = submitButtonUnit;
-     // so when submit button is clicked, onsubmit event will be invoked
-     this.override(this.submitButtonUnit, 'onclick', this.onsubmit); 
+  constructor (elm, nameUnit, passwordUnit, submitButtonUnit) {
+    super(elm)
+    this.nameUnit = nameUnit
+    this.passwordUnit = passwordUnit
+    this.submitButtonUnit = submitButtonUnit
+    // so when submit button is clicked, onsubmit event will be invoked
+    this.override(this.submitButtonUnit, 'onclick', this.onsubmit)
   }
 
-  onsubmit() {
-     // ajaxRequest using nameUnit.value() and passwordUnit.value();
+  onsubmit () {
+    // ajaxRequest using nameUnit.value() and passwordUnit.value();
   }
-
 }
 
 ```
 
 ```js
+const { Unit } = require('@page-libs/unit')
+
 class SubmitButton extends Unit {
-  
-  constructor(elm) {
-     super(elm);
+  constructor (elm) {
+    super(elm)
   }
 
-  onclick() {
+  onclick () {
     /* it can be defined, but it also can be
          overridden with some other event(in that case this method would be ignored) */
   }
-
 }
+
 ```
 
 ```js
+const { Unit } = require('@page-libs/unit')
+
 class NameInput extends Unit {
-     
-   constructor(elm) {
-     super(elm);
-   }
+  constructor (elm) {
+    super(elm)
+  }
 
-   value() {
-     return this.elm.value;
-   }
- 
+  value () {
+    return this.elm.value
+  }
 }
+
 ```
 
 ```js
-class PasswordInput extends Unit {
-     
-   constructor(elm) {
-     super(elm);
-   }
+const { Unit } = require('@page-libs/unit')
 
-   value() {
-     return this.elm.value;
-   }
- 
+class PasswordInput extends Unit {
+  constructor (elm) {
+    super(elm)
+  }
+
+  value () {
+    return this.elm.value
+  }
 }
+
 ```
 
 Then you can declare elements in the following style:
@@ -131,6 +132,6 @@ new UserForm(
   new NameInput(document.getElementById('name')),
   new PasswordInput(document.getElementById('password')),
   new SubmitButton(document.getElementById('submit'))
-);
+)
 
 ```
