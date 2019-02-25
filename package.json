@@ -1,6 +1,6 @@
 {
   "name": "@page-libs/unit",
-  "version": "1.1.1",
+  "version": "1.1.2",
   "description": "Library for Page framework that provides Unit abstraction.",
   "main": "out/index.js",
   "scripts": {
