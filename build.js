@@ -18,7 +18,7 @@ new SpawnedCommand(
     new ExecutedTestCoverageReport(
       new ExecutedTestCoverageCheck(
         new ExecutedTestCoverage(
-          process, './test-executor.js'
+          process, './test.js'
         ),
         { 'lines': 100, 'functions': 100, 'branches': 100 }
       ), 'json-summary'
